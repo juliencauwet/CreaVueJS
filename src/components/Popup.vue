@@ -1,7 +1,7 @@
 <script setup>
+import FormulaireArnaud from './FormulaireArnaud.vue'
   defineProps(
-      ['nomArticle'],
-      ['contenu']
+      ['nomArticle', 'contenu']
   )
 </script>
 
@@ -13,6 +13,7 @@
     <div>
       <p>{{contenu}}</p>
     </div>
+    <FormulaireArnaud></FormulaireArnaud>
   </section>
 
 </template>
