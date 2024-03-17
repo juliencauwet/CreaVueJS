@@ -27,6 +27,9 @@ console.log('longueur de allAppliances', allAppliances.value.length);
 allIngredients.value = [...new Set(allIngredients.value)]
 allUstensils.value = [...new Set(allUstensils.value)]
 allAppliances.value = [...new Set(allAppliances.value)]
+allIngredients.value.sort();
+allUstensils.value.sort();
+allAppliances.value.sort();
 
 
 console.log('après');
@@ -38,7 +41,7 @@ console.log('longueur de allAppliances', allAppliances.value.length);
 </script>
 
 <template>
-  <Navbar :appliances="allAppliances"></Navbar>
+  <Navbar :appliances="allAppliances" :ingredients="allIngredients"></Navbar>
   <RecipeDisplay :recipes="recipes"></RecipeDisplay>
   
   
