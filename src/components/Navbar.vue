@@ -1,10 +1,12 @@
 <script setup>
-defineProps(['appliances', 'ingredients'])
+defineProps(['appliances', 'ingredients', 'ustensils'])
 import { ref } from 'vue';
 
 
 const selectedAppliance = ref('');
 const selectedIngredients = ref([]);
+const selectedUstensils = ref([]);
+
 
 
 </script>
@@ -36,26 +38,39 @@ const selectedIngredients = ref([]);
             </select>
           </div>
 
-          
+
         </form>
 
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsButton1"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Ingredients
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="ingredientsButton1">
-              <li class="form-check " v-for="ingredient in ingredients" :key="ingredient">
-                <input v-model="selectedIngredients" class="form-check-input" type="checkbox" :value="ingredient"
-                  :id="ingredient">
-                <label class="form-check-label" :for="ingredient">
-                  {{ ingredient }}
-                </label>
-              </li>
-            </ul>
-
-
-          </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Ingredients
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="ingredientsButton1">
+            <li class="form-check " v-for="ingredient in ingredients" :key="ingredient">
+              <input v-model="selectedIngredients" class="form-check-input" type="checkbox" :value="ingredient"
+                :id="ingredient">
+              <label class="form-check-label" :for="ingredient">
+                {{ ingredient }}
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="ustensilsButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Ustensils
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="ustensilsButton1">
+            <li class="form-check " v-for="ustensil in ustensils" :key="ustensil">
+              <input v-model="selectedustensils" class="form-check-input" type="checkbox" :value="ustensil"
+                :id="ustensil">
+              <label class="form-check-label" :for="ustensil">
+                {{ ustensil }}
+              </label>
+            </li>
+          </ul>
+        </div>
 
 
       </div>
@@ -78,7 +93,7 @@ const selectedIngredients = ref([]);
 
 
 
-.filter-element {
+.filter-element, .dropdown{
   margin: 10px;
 }
 </style>

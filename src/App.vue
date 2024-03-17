@@ -41,7 +41,7 @@ console.log('longueur de allAppliances', allAppliances.value.length);
 </script>
 
 <template>
-  <Navbar :appliances="allAppliances" :ingredients="allIngredients"></Navbar>
+  <Navbar :appliances="allAppliances" :ingredients="allIngredients" :ustensils="allUstensils"></Navbar>
   <RecipeDisplay :recipes="recipes"></RecipeDisplay>
   
   
