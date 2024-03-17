@@ -6,6 +6,7 @@ import { ref } from 'vue';
 
 const allIngredients = ref([]);
 const allUstensils = ref([]);
+const allAppliances = ref([]);
 
 recipes.map( r=> {
   r.ingredients.map(i => {
@@ -14,26 +15,30 @@ recipes.map( r=> {
   r.ustensils.map(u => {
     allUstensils.value.push(u);
   })
+  allAppliances.value.push(r.appliance);
 })
 
 console.log('avant');
 console.log('longueur de allIngredients', allIngredients.value.length);
 console.log('longueur de allUstensils', allUstensils.value.length);
+console.log('longueur de allAppliances', allAppliances.value.length);
 
 
 allIngredients.value = [...new Set(allIngredients.value)]
 allUstensils.value = [...new Set(allUstensils.value)]
+allAppliances.value = [...new Set(allAppliances.value)]
+
 
 console.log('après');
 console.log('longueur de allIngredients', allIngredients.value.length);
 console.log('longueur de allUstensils', allUstensils.value.length);
+console.log('longueur de allAppliances', allAppliances.value.length);
 
 
 </script>
 
 <template>
   <Navbar></Navbar>
- 
   <RecipeDisplay :recipes="recipes"></RecipeDisplay>
   
   
