@@ -19,11 +19,10 @@ const selectedUstensils = ref([]);
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home
-            </a>
+            <router-link to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <router-link to="/about">About</router-link>
           </li>
         </ul>
         <form class="filter">
@@ -93,7 +92,9 @@ const selectedUstensils = ref([]);
 
 
 
-.filter-element, .dropdown{
+.filter-element,
+.dropdown,
+.nav-item {
   margin: 10px;
 }
 </style>
