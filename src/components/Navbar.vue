@@ -1,7 +1,9 @@
 <script setup>
 defineProps(['appliances', 'ingredients', 'ustensils'])
 import { ref } from 'vue';
+import { useMyStore } from '../stores/myStore';
 
+const store = useMyStore();
 
 const selectedAppliance = ref('');
 const selectedIngredients = ref([]);
@@ -11,7 +13,6 @@ const selectedUstensils = ref([]);
 
 </script>
 <template>
-
   <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="light">
 
     <div class="container-fluid">
@@ -62,7 +63,7 @@ const selectedUstensils = ref([]);
           </button>
           <ul class="dropdown-menu" aria-labelledby="ustensilsButton1">
             <li class="form-check " v-for="ustensil in ustensils" :key="ustensil">
-              <input v-model="selectedustensils" class="form-check-input" type="checkbox" :value="ustensil"
+              <input v-model="selectedUstensils" class="form-check-input" type="checkbox" :value="ustensil"
                 :id="ustensil">
               <label class="form-check-label" :for="ustensil">
                 {{ ustensil }}
