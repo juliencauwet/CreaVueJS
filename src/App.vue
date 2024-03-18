@@ -1,7 +1,6 @@
 <script setup>
 import Navbar from '@/components/Navbar.vue';
 import { recipes } from '@/assets/recipes';
-import RecipeDisplay from './components/RecipeDisplay.vue';
 import { ref } from 'vue';
 
 const allIngredients = ref([]);
@@ -43,8 +42,6 @@ console.log('longueur de allAppliances', allAppliances.value.length);
 <template>
   <Navbar :appliances="allAppliances" :ingredients="allIngredients" :ustensils="allUstensils"></Navbar>
   <router-view></router-view>
-  <RecipeDisplay :recipes="recipes"></RecipeDisplay>
-  
   
 </template>
 <style scoped></style>

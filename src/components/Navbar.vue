@@ -1,15 +1,18 @@
 <script setup>
 defineProps(['appliances', 'ingredients', 'ustensils'])
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useMyStore } from '../stores/myStore';
 
 const store = useMyStore();
 
+const keyword = ref('');
 const selectedAppliance = ref('');
 const selectedIngredients = ref([]);
 const selectedUstensils = ref([]);
 
-
+const filterRecipes = () => {
+      store.filterRecipes(keyword.value, selectedIngredients.value, selectedAppliance.value, selectedUstensils.value)
+}
 
 </script>
 <template>
@@ -25,11 +28,14 @@ const selectedUstensils = ref([]);
           <li class="nav-item">
             <router-link to="/about">About</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/recipes">Recipes</router-link>
+          </li>
         </ul>
         <form class="filter">
           <div class="filter-element">
             <label for="keyword">Mot clé</label>
-            <input id="keyword" class="form-control" type="search">
+            <input id="keyword" class="form-control" type="search" v-model="keyword">
           </div>
           <div class="filter-element">
             <label for="appliance">Appareil</label>
@@ -37,11 +43,7 @@ const selectedUstensils = ref([]);
               <option v-for="appliance in appliances" :value="appliance"> {{ appliance }}</option>
             </select>
           </div>
-
-
-        </form>
-
-        <div class="dropdown">
+          <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
             Ingredients
@@ -71,6 +73,11 @@ const selectedUstensils = ref([]);
             </li>
           </ul>
         </div>
+        <button class="form-control" type="submit" @click.prevent="filterRecipes"> Filtrer </button>
+
+        </form>
+
+        
 
 
       </div>

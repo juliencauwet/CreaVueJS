@@ -1,50 +1,20 @@
 <script setup>
-import { recipes } from '@/assets/recipes';
 import RecipeView from '@/components/RecipeView.vue';
-import { ref, watch } from 'vue';
-defineProps(['recipes']);
+import { ref } from 'vue';
+import { useMyStore } from '../stores/myStore';
+import { storeToRefs } from 'pinia';
 
-const filteredRecipes = ref([]);
-filteredRecipes.value = recipes;
+
+const store = useMyStore();
 const keyword = ref('');
-
-watch(keyword, () => {
-    const keywordInLowercase = keyword.value.toLowerCase();
-    filteredRecipes.value = recipes.filter(r => {
-        return r.description.includes(keywordInLowercase)
-            || r.name.includes(keywordInLowercase)
-            || isKeywordIncludedInIngredientsArray(keywordInLowercase, r.ingredients)
-            || isKeywordIncludedInUstensilsArray(keywordInLowercase, r.ustensils)
-            || r.appliance.includes(keywordInLowercase);
-    })
-})
-
-const isKeywordIncludedInIngredientsArray = (word, ingredientsArray) => {
-    ingredientsArray.map(elt => {
-        if(elt.ingredient.includes(word)) {
-            return true;
-        }
-    })
-    return false;
-}
-
-const isKeywordIncludedInUstensilsArray = (word, ustensilsArray) => {
-    ustensilsArray.map(elt => {
-        if (elt.includes(word)) {
-            return true;
-        }
-    })
-    return false;
-}
-
+const { selectedRecipes } = storeToRefs(store);
 
 
 </script>
 <template>
-    <h1> Nombre de recettes correspondantes: {{ filteredRecipes.length }}</h1>
-    <input class="form-control me-sm-2" type="search" placeholder="Search" v-model="keyword">
+    <h1> Nombre de recettes correspondantes: {{ selectedRecipes.length }}</h1>
     <div class="row">
-        <div class="recipe-container col-md-4" v-for="recipe in filteredRecipes">
+        <div class="recipe-container col-md-4" v-for="recipe in selectedRecipes">
             <RecipeView class="recipe" :recipe="recipe"></RecipeView>
         </div>
     </div>
