@@ -1,10 +1,12 @@
 <script setup>
+import FaresForm from './FaresForm.vue';
 defineProps(['title']);
 </script>
 
 <template>
     <div>
         <h1> {{ title }}</h1>
+        <FaresForm />
     </div>
 </template>
 
