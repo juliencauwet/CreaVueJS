@@ -10,7 +10,7 @@ const selectedAppliance = ref('');
 const selectedIngredients = ref([]);
 const selectedUstensils = ref([]);
 
-const filterRecipes = () => {
+const filter = () => {
       store.filterRecipes(keyword.value, selectedIngredients.value, selectedAppliance.value, selectedUstensils.value)
 }
 
@@ -73,7 +73,7 @@ const filterRecipes = () => {
             </li>
           </ul>
         </div>
-        <button class="form-control" type="submit" @click.prevent="filterRecipes"> Filtrer </button>
+        <button class="form-control" type="submit" @click.prevent="filter"> Filtrer </button>
 
         </form>
 

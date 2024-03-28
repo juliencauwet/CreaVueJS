@@ -17,11 +17,6 @@ recipes.map( r=> {
   allAppliances.value.push(r.appliance);
 })
 
-console.log('avant');
-console.log('longueur de allIngredients', allIngredients.value.length);
-console.log('longueur de allUstensils', allUstensils.value.length);
-console.log('longueur de allAppliances', allAppliances.value.length);
-
 
 allIngredients.value = [...new Set(allIngredients.value)]
 allUstensils.value = [...new Set(allUstensils.value)]
@@ -29,13 +24,6 @@ allAppliances.value = [...new Set(allAppliances.value)]
 allIngredients.value.sort();
 allUstensils.value.sort();
 allAppliances.value.sort();
-
-
-console.log('après');
-console.log('longueur de allIngredients', allIngredients.value.length);
-console.log('longueur de allUstensils', allUstensils.value.length);
-console.log('longueur de allAppliances', allAppliances.value.length);
-
 
 </script>
 
