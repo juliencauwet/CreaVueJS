@@ -8,7 +8,7 @@
     <form >
       <div class="champ">
         <label for="nom">Nom : </label>
-        <input type="text" id="nom" >
+        <input type="text" id="nom">
       </div>
       <div class="champ">
         <label for="email">Email:</label>

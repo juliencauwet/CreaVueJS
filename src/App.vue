@@ -1,18 +1,47 @@
 <script setup>
-import Navbar from './components/Navbar.vue';
-import ComposantdeJu from './components/ComposantdeJu.vue';
-import Popup from "@/components/Popup.vue";
-import ComponentGiovanni from './components/ComponentGiovanni.vue';
-import FaresComp from './components/FaresComponent.vue'
-import CompMohKing from './components/CompMohKing.vue';
+import Navbar from '@/components/Navbar.vue';
+import { recipes } from '@/assets/recipes';
+import { ref } from 'vue';
+
+const allIngredients = ref([]);
+const allUstensils = ref([]);
+const allAppliances = ref([]);
+
+recipes.map( r=> {
+  r.ingredients.map(i => {
+    allIngredients.value.push(i.ingredient);
+  });
+  r.ustensils.map(u => {
+    allUstensils.value.push(u);
+  })
+  allAppliances.value.push(r.appliance);
+})
+
+console.log('avant');
+console.log('longueur de allIngredients', allIngredients.value.length);
+console.log('longueur de allUstensils', allUstensils.value.length);
+console.log('longueur de allAppliances', allAppliances.value.length);
+
+
+allIngredients.value = [...new Set(allIngredients.value)]
+allUstensils.value = [...new Set(allUstensils.value)]
+allAppliances.value = [...new Set(allAppliances.value)]
+allIngredients.value.sort();
+allUstensils.value.sort();
+allAppliances.value.sort();
+
+
+console.log('après');
+console.log('longueur de allIngredients', allIngredients.value.length);
+console.log('longueur de allUstensils', allUstensils.value.length);
+console.log('longueur de allAppliances', allAppliances.value.length);
+
+
 </script>
 
 <template>
-<Navbar></Navbar>
-  <Popup nomArticle="Arnaud"></Popup>
-  <ComponentGiovanni/>
-   <CompMohKing></CompMohKing>
-    <FaresComp title="Je suis le composant de ⴼⴰⵔⴻⵙ ⴱⵓⵣⴰⵔⵉⴰ" />
-    <ComposantdeJu></ComposantdeJu>
+  <Navbar :appliances="allAppliances" :ingredients="allIngredients" :ustensils="allUstensils"></Navbar>
+  <router-view></router-view>
+  
 </template>
 <style scoped></style>
